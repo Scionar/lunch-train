@@ -1,0 +1,14 @@
+{
+  "name": "lunch-train",
+  "version": "1.0.0",
+  "description": "Lounch group app.",
+  "scripts": {
+    "docker-production": "docker-compose build && docker-compose up",
+    "docker-local": "docker-compose -f docker-compose.local.yml up"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scionar/lunch-train.git"
+  },
+  "dependencies": {}
+}
