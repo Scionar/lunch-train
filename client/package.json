@@ -1,5 +1,5 @@
 {
-  "name": "Lunch train client",
+  "name": "lunch-train-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -1,0 +1,16 @@
+version: "3"
+services:
+
+  client:
+    command: bash -c "yarn && yarn start"
+    image: node:8
+    networks:
+      - client_server
+    volumes:
+      - ./client:/app
+    working_dir: /app
+    ports:
+      - "127.0.0.1:80:3000"
+
+networks:
+  client_server:
