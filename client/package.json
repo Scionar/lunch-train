@@ -12,12 +12,15 @@
   "devDependencies": {
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
+    "prettier": "^1.7.4",
     "react-test-renderer": "^16.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "verify-prettier": "prettier --list-different \"src/**/*.{js,jsx,css,json}\"",
+    "fix-prettier": "prettier --write \"src/**/*.{js,jsx,css,json}\""
   }
 }
