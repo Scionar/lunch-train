@@ -16,3 +16,15 @@ Speciality of local configuration is that there is no Docker image build. App re
 ## Build with production configuration
 * Run in project root command `yarn run docker-production`.
 * Check in browser http://localhost:80.
+
+## Development
+
+Project is shared into own services build with docker. Every service has own specific configurations.
+
+### Git hooks
+
+Git hooks are implemented with [husky](https://github.com/typicode/husky). Precommit hooks should check linting status before commit and prevent action if there is errors.
+
+### Linting
+
+Project services use [eslint](https://eslint.org/) for linting. It uses [prettier](https://github.com/prettier/prettier)'s rule configuration.
