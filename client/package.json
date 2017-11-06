@@ -12,6 +12,8 @@
   "devDependencies": {
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
+    "eslint": "^4.10.0",
+    "eslint-plugin-prettier": "^2.3.1",
     "prettier": "^1.7.4",
     "react-test-renderer": "^16.0.0"
   },
@@ -21,6 +23,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "verify-prettier": "prettier --list-different \"src/**/*.{js,jsx,css,json}\"",
-    "fix-prettier": "prettier --write \"src/**/*.{js,jsx,css,json}\""
+    "fix-prettier": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
+    "lint-js": "eslint ./src"
   }
 }
