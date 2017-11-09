@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Page from './components/page';
+import Page from './components/page/page';
 
 export default () => (
   <Switch>
