@@ -9,5 +9,13 @@ services:
     ports:
       - "127.0.0.1:80:3000"
 
+  api-server:
+    build: ./api-server
+    image: lunch-train-api-server:1.0
+    networks:
+      - client_server
+    ports:
+      - "127.0.0.1:27017:27017"
+
 networks:
   client_server:
