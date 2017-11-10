@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://github.com/Scionar/lunch-train",
   "dependencies": {
+    "node-sass-chokidar": "^0.0.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
@@ -26,6 +27,8 @@
     "eject": "react-scripts eject",
     "verify-prettier": "prettier --list-different \"src/**/*.{js,jsx,css,json}\"",
     "fix-prettier": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   }
 }

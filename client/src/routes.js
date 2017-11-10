@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Page from './components/page/page';
+import PageContainer from './components/pagecontainer/pagecontainer';
 
 export default () => (
   <Switch>
-    <Route exact path="/" component={Page} />
+    <Route exact path="/" component={PageContainer} />
   </Switch>
 );

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './page.css';
 
-export default class Page extends Component {
-  render() {
-    return (
-      <div className="page">
-        <h1>Page title</h1>
-      </div>
-    );
-  }
-}
+const Page = props => (
+  <div className="page">
+    <h1 className="page__title">{props.title}</h1>
+    <p>{props.content}</p>
+  </div>
+);
+
+export default Page;

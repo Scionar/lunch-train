@@ -1,0 +1,26 @@
+@import '../../variables';
+
+.page {
+  background-color: $color_white;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  margin: 10vh auto 0;
+  max-width: 600px;
+  min-height: 75vmin;
+  padding: 2rem;
+  width: 90%;
+  z-index: 2;
+
+  @include breakpoint(tablet) {
+    width: 75%;
+  }
+
+  @include breakpoint(desktop) {
+    width: 50%;
+  }
+}
+
+.page__title {
+  font-size: 30px;
+  text-align: center;
+}
