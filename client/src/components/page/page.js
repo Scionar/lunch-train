@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './page.css';
 
-const Page = props => (
-  <div className="page">
-    <h1 className="page__title">{props.title}</h1>
-    <p>{props.content}</p>
-  </div>
-);
+class Page extends Component {
+  render() {
+    return (
+      <div className="page">
+        <h1 className="page__title">{this.props.title}</h1>
+        {this.props.children}
+      </div>
+    );
+  }
+}
 
 export default Page;
