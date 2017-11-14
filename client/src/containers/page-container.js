@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Page from '../page/page';
+import Page from '../components/page/page';
 
 export default class LoginPageContainer extends Component {
   state = { comments: [] };

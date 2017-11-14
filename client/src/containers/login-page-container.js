@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Page from '../page/page';
-import LoginForm from '../login-form/login-form';
+import Page from '../components/page/page';
+import LoginForm from '../components/login-form/login-form';
 
 export default class PageContainer extends Component {
   state = { comments: [] };
