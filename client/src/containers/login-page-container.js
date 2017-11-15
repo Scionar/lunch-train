@@ -13,7 +13,8 @@ export default class PageContainer extends Component {
 
   render() {
     return (
-      <Page title={this.state.title} children={this.state.content}>
+      <Page children={this.state.content}>
+        <h1 class="page__title">Lunch train</h1>
         <LoginForm />
       </Page>
     );

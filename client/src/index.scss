@@ -16,3 +16,19 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.text-input {
+  background-color: $color_white;
+  border: 1px solid $color_grey;
+  border-radius: 0.25rem;
+  color: $color_black;
+  padding: 1rem 2rem;
+}
+
+.button {
+  background-color: $color_dark-grey;
+  border: 0;
+  border-radius: 0.25rem;
+  color: $color_white;
+  padding: 1rem 2rem;
+}

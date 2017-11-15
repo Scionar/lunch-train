@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 import Page from '../components/page/page';
 
-export default class LoginPageContainer extends Component {
-  state = { comments: [] };
-
-  componentDidMount() {
-    this.setState({
-      title: 'Page title'
-    });
-  }
-
+class LoginPageContainer extends Component {
   render() {
     return (
-      <Page title={this.state.title}>
+      <Page>
+        <h1 class="page__title">Page title</h1>
         <p>The page content.</p>
       </Page>
     );
   }
 }
+
+export default LoginPageContainer;
