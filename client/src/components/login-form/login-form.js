@@ -12,6 +12,7 @@ class LoginForm extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleInputChange(event) {
@@ -26,9 +27,12 @@ class LoginForm extends Component {
     event.preventDefault();
     const email = this.state.loginEmail;
     const password = this.state.loginPassword;
-    const promise = auth.signInWithEmailAndPassword(email, password);
-    promise.then(a => console.log(a));
-    promise.catch(e => console.log(e.message));
+    auth.signInWithEmailAndPassword(email, password);
+  }
+
+  handleLogout(event) {
+    event.preventDefault();
+    auth.signOut();
   }
 
   render() {
@@ -54,9 +58,15 @@ class LoginForm extends Component {
 
         <input
           className="login-form__submit button"
-          placeholder="Password"
           type="submit"
           value="Login"
+        />
+
+        <input
+          className="login-form__submit button"
+          type="button"
+          value="Logout"
+          onClick={this.handleLogout}
         />
       </form>
     );
