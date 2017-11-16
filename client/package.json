@@ -26,7 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "precommit": "npm run lint",
+    "precommit": "CI=true npm run test && npm run lint",
     "eject": "react-scripts eject",
     "verify-prettier": "prettier --list-different \"src/**/*.{js,jsx,css,json}\"",
     "fix-prettier": "prettier --write \"src/**/*.{js,jsx,css,json}\"",

@@ -2,14 +2,8 @@ import React, { Component } from 'react';
 import Page from '../components/page/page';
 import LoginForm from '../components/login-form/login-form';
 
-export default class PageContainer extends Component {
+class LoginPageContainer extends Component {
   state = { comments: [] };
-
-  componentDidMount() {
-    this.setState({
-      title: 'Lunch train'
-    });
-  }
 
   render() {
     return (
@@ -20,3 +14,5 @@ export default class PageContainer extends Component {
     );
   }
 }
+
+export default LoginPageContainer;
