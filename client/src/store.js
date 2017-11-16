@@ -7,7 +7,11 @@ const initialState = {
   trains: []
 };
 
-const rootReducer = (state = initialState, action) => {
+const persistState = localStorage.getItem('reduxState')
+  ? JSON.parse(localStorage.getItem('reduxState'))
+  : initialState;
+
+const rootReducer = (state = persistState, action) => {
   switch (action.type) {
     case 'LOG_IN':
       return loginReducer(state, action);
@@ -20,6 +24,9 @@ const rootReducer = (state = initialState, action) => {
 
 let store = createStore(rootReducer);
 
-store.subscribe(() => console.log(store.getState()));
+store.subscribe(() => {
+  console.log(store.getState());
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
+});
 
 export default store;

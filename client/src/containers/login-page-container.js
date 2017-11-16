@@ -3,8 +3,6 @@ import Page from '../components/page/page';
 import LoginForm from '../components/login-form/login-form';
 
 class LoginPageContainer extends Component {
-  state = { comments: [] };
-
   render() {
     return (
       <Page>
