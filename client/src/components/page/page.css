@@ -1,5 +1,4 @@
 .page {
-  background-color: #fff;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -20,6 +19,11 @@
   .page {
     width: 50%;
   }
+}
+
+.page_white {
+  background-color: #fff;
+  box-shadow: 0 0 0.5rem 0 #000;
 }
 
 .page__title {

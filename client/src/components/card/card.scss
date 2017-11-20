@@ -1,19 +1,43 @@
 @import '../../variables';
 
 .card {
-  background-color: $color_light-grey;
-  padding: 2rem;
-  margin: 0.5rem auto;
-  max-width: 600px;
-  transition: 0.5s;
+  background-color: $color_white;
+  box-shadow: 0 0 0.5rem 0 $color_black;
+  margin: 0 0 1rem;
   width: 100%;
+}
 
-  &:hover {
-    box-shadow: 0 0 2rem 0 $color_black-50;
-    margin: 1rem auto;
+.card__header {
+  align-items: flex-start;
+  background-color: rebeccapurple;
+  color: $color_white;
+  display: flex;
+  flex-direction: column;
+  height: 6.5rem;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem 0.8rem;
+}
 
-    .card:first-of-type {
-      margin: 0 auto 1rem auto;
-    }
+.card__restaurant-name {
+  display: block;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.card__participants {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 0.5rem;
+  transition: 1s;
+
+  .card_opened & {
+    height: 4rem;
+    opacity: 1;
+    padding: 0.5rem;
   }
+}
+
+.card__actions {
+  border-top: 1px solid $color_light-grey;
 }

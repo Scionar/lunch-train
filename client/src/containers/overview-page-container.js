@@ -13,8 +13,17 @@ class OverviewPageContainer extends Component {
 
     if (!trainList.length) return <EmptyOverviewNote />;
 
-    return trainList.map(train => {
-      return <Card>{train.restaurant}</Card>;
+    return trainList.map((train, trainIndex) => {
+      return (
+        <Card
+          key={trainIndex}
+          restaurant={train.restaurant}
+          leader={train.leader}
+          startTime={train.startTime}
+          participans={train.participans}
+          joined={train.joined}
+        />
+      );
     });
   }
 
@@ -30,7 +39,20 @@ class OverviewPageContainer extends Component {
 }
 
 const testingData = [
-  { restaurant: 'Sushi bar', driver: 'Testuser', startTime: '11:15' }
+  {
+    restaurant: 'Sushi bar',
+    leader: 'Jeremy Lancelot',
+    startTime: '11:15',
+    participans: ['Jeremy Woy', 'Jon Snow'],
+    joined: false
+  },
+  {
+    restaurant: 'Sushi bar',
+    leader: 'Jeremy Lancelot',
+    startTime: '11:15',
+    participans: ['Jeremy Woy', 'Jon Snow'],
+    joined: false
+  }
 ];
 
 const mapStateToProps = state => {

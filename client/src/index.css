@@ -15,6 +15,11 @@ body {
   padding: 0;
 }
 
+p {
+  font-size: inherit;
+  line-height: 100%;
+}
+
 .text-input {
   background-color: #fff;
   border: 1px solid #b3b3b3;
@@ -27,6 +32,22 @@ body {
   background-color: #808080;
   border: 0;
   border-radius: 0.25rem;
+  cursor: pointer;
   color: #fff;
-  padding: 1rem 2rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+}
+
+.button_hidden {
+  display: none;
+}
+
+.button_slim {
+  background-color: transparent;
+  color: #000;
+  transition: 0.1s;
+}
+.button_slim:hover {
+  background-color: rgba(0, 0, 0, 0.25);
 }

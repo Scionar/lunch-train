@@ -5,7 +5,7 @@ import LoginForm from '../components/login-form/login-form';
 class LoginPageContainer extends Component {
   render() {
     return (
-      <Page>
+      <Page whiteColor>
         <h1 className="page__title">Lunch train</h1>
         <LoginForm />
       </Page>
