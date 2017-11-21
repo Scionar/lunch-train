@@ -1,32 +1,27 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 * {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 html {
   background-color: #b3b3b3;
-  font-size: 20px;
-}
+  font-size: 20px; }
 
 body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 p {
   font-size: inherit;
-  line-height: 100%;
-}
+  line-height: 100%; }
 
 .text-input {
   background-color: #fff;
   border: 1px solid #b3b3b3;
   border-radius: 0.25rem;
   color: #000;
-  padding: 1rem 2rem;
-}
+  padding: 1rem 2rem; }
 
 .button {
   background-color: #808080;
@@ -36,18 +31,14 @@ p {
   color: #fff;
   display: inline-block;
   padding: 0.5rem 1rem;
-  margin: 0.25rem;
-}
+  margin: 0.25rem; }
 
 .button_hidden {
-  display: none;
-}
+  display: none; }
 
 .button_slim {
   background-color: transparent;
   color: #000;
-  transition: 0.1s;
-}
-.button_slim:hover {
-  background-color: rgba(0, 0, 0, 0.25);
-}
+  transition: 0.1s; }
+  .button_slim:hover {
+    background-color: rgba(0, 0, 0, 0.25); }

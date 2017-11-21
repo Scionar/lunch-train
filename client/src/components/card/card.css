@@ -2,8 +2,7 @@
   background-color: #fff;
   box-shadow: 0 0 0.5rem 0 #000;
   margin: 0 0 1rem;
-  width: 100%;
-}
+  width: 100%; }
 
 .card__header {
   align-items: flex-start;
@@ -13,28 +12,23 @@
   flex-direction: column;
   height: 6.5rem;
   justify-content: space-between;
-  padding: 0.5rem 0.5rem 0.8rem;
-}
+  padding: 0.5rem 0.5rem 0.8rem; }
 
 .card__restaurant-name {
   display: block;
   font-size: 1.5rem;
-  margin: 0;
-}
+  margin: 0; }
 
 .card__participants {
   height: 0;
   opacity: 0;
   overflow: hidden;
   padding: 0 0.5rem;
-  transition: 1s;
-}
-.card_opened .card__participants {
-  height: 4rem;
-  opacity: 1;
-  padding: 0.5rem;
-}
+  transition: 1s; }
+  .card_opened .card__participants {
+    height: 4rem;
+    opacity: 1;
+    padding: 0.5rem; }
 
 .card__actions {
-  border-top: 1px solid #e6e6e6;
-}
+  border-top: 1px solid #e6e6e6; }

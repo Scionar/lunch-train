@@ -1,13 +1,10 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
+  align-items: center; }
 
 .login-form__password {
-  margin: 1rem 0 0;
-}
+  margin: 1rem 0 0; }
 
 .login-form__submit {
-  margin: 1rem 0 0;
-}
+  margin: 1rem 0 0; }
