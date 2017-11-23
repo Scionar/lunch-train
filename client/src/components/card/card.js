@@ -6,7 +6,7 @@ class Card extends Component {
     super(props);
     this.state = {
       opened: false,
-      joined: props.joined,
+      joined: props.joined || false,
       cardClasses: this.updateCardClasses(),
       joinClasses: this.updateJoinClasses(props.joined),
       leaveClasses: this.updateLeaveClasses(props.joined)
@@ -20,7 +20,7 @@ class Card extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      joined: nextProps.joined
+      joined: nextProps.joined || false
     });
   }
 
@@ -31,13 +31,13 @@ class Card extends Component {
   }
 
   updateJoinClasses(joined) {
-    let result = ['button button_slim'];
+    let result = ['join-button', 'button', 'button_slim'];
     if (joined) result.push('button_hidden');
     return result.join(' ');
   }
 
   updateLeaveClasses(joined) {
-    let result = ['button button_slim'];
+    let result = ['leave-button', 'button', 'button_slim'];
     if (!joined) result.push('button_hidden');
     return result.join(' ');
   }
@@ -68,7 +68,7 @@ class Card extends Component {
           <div className="card__start-time">{this.props.startTime}</div>
         </div>
         <div className="card__participants">
-          {this.props.participans.join(', ')}
+          {this.props.participans ? this.props.participans.join(', ') : ''}
         </div>
         <div className="card__actions">
           <a onClick={this.toggleJoining} className={this.state.joinClasses}>
