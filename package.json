@@ -4,7 +4,7 @@
   "description": "Lounch group app.",
   "scripts": {
     "docker-production": "docker-compose build && docker-compose up",
-    "docker-local": "docker-compose -f docker-compose.local.yml up"
+    "docker-local": "docker-compose -f docker-compose.local.yml build && docker-compose -f docker-compose.local.yml up"
   },
   "repository": {
     "type": "git",

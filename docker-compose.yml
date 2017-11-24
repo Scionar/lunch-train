@@ -15,7 +15,7 @@ services:
     networks:
       - client_server
     ports:
-      - "127.0.0.1:27017:27017"
+      - "127.0.0.1:3100:3100"
 
 networks:
   client_server:

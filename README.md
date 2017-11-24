@@ -21,6 +21,14 @@ Copy example file `./client/src/credentials.json.example` to `./client/src/crede
 
 Speciality of local configuration is that there is no Docker image build. App repositories are shared inside Docker images. This doesn't prevent live reload.
 
+If there is need to build and run containers individually run commands per service directory:
+
+```
+cd api-server
+docker build -t api-server .
+docker run -p 3100:3100 -d api-server
+```
+
 ## Build with production configuration
 
 * Run in project root command `yarn run docker-production`.
