@@ -3,7 +3,8 @@ services:
 
   client:
     build: ./client
-    image: lunch-train-client:1.0
+    image: lunch-train_client:1.0
+    container_name: "lunch-train_client"
     networks:
       - client_server
     ports:
@@ -11,11 +12,28 @@ services:
 
   api-server:
     build: ./api-server
-    image: lunch-train-api-server:1.0
+    image: lunch-train_api-server:1.0
+    container_name: "lunch-train_api-server"
     networks:
       - client_server
+      - server_database
     ports:
       - "127.0.0.1:3100:3100"
 
+  database:
+    build: ./database
+    image: lunch-train_database:1.0
+    container_name: "lunch-train_database"
+    networks:
+      - server_database
+    expose:
+      - 27017
+    ports:
+      - "127.0.0.1:3200:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+
 networks:
   client_server:
+  server_database:

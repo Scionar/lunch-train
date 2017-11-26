@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Lounch group app.",
   "scripts": {
-    "docker-production": "docker-compose build && docker-compose up",
-    "docker-local": "docker-compose -f docker-compose.local.yml build && docker-compose -f docker-compose.local.yml up"
+    "docker-production": "docker-compose build && docker-compose up --force-recreate --build",
+    "docker-local": "docker-compose -f docker-compose.local.yml up --force-recreate --build"
   },
   "repository": {
     "type": "git",

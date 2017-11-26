@@ -12,7 +12,11 @@ App to manage your workplace's lunch trains. Create a train with destination and
 
 **Firebase credentials**
 
-Copy example file `./client/src/credentials.json.example` to `./client/src/credentials.json`. Copy Firebase configurations from [Firebase Console](https://console.firebase.google.com) under firebase-property.
+Copy example file `./client/src/credentials.json.example` to `./client/src/credentials.json`. Copy Firebase configurations from your [Firebase Console](https://console.firebase.google.com) under firebase-property.
+
+**Database root credentials**
+
+Copy example file `./.env.example` to `./.env`. Change root username and root password!
 
 ## Build with local configuration
 

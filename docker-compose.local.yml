@@ -3,6 +3,7 @@ services:
 
   client:
     image: node:8-alpine
+    container_name: "lunch-train_client"
     volumes:
       - ./client:/app
     networks:
@@ -14,14 +15,30 @@ services:
 
   api-server:
     image: node:8-alpine
+    container_name: "lunch-train_api-server"
     volumes:
       - ./api-server:/app
     networks:
       - client_server
+      - server_database
     ports:
       - "127.0.0.1:3100:3100"
     working_dir: /app
     command: sh -c "yarn install && yarn start"
 
+  database:
+    image: mongo:3.4
+    container_name: "lunch-train_database"
+    networks:
+      - server_database
+    expose:
+      - 27017
+    ports:
+      - "127.0.0.1:3200:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD
+
 networks:
   client_server:
+  server_database:
