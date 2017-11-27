@@ -16,7 +16,11 @@ Copy example file `./client/src/credentials.json.example` to `./client/src/crede
 
 **Database root credentials**
 
-Copy example file `./.env.example` to `./.env`. Change root username and root password!
+Copy example file `./.env.example` to `./.env`. Change root username and root password! Username and password are used in creating database container and connecting from API server.
+
+**API server configuration and credentials**
+
+Copy example file `./api-server/.env.example` to `./api-server/.env`. No need to change the configuration. By default authentication credentials are overwritten by docker-compose configuration. This file is not included to Git for safety.
 
 ## Build with local configuration
 
