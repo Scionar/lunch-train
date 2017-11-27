@@ -5,6 +5,8 @@ services:
     build: ./client
     image: lunch-train_client:1.0
     container_name: "lunch-train_client"
+    depends_on:
+      - api-server
     networks:
       - client_server
     ports:
@@ -14,11 +16,16 @@ services:
     build: ./api-server
     image: lunch-train_api-server:1.0
     container_name: "lunch-train_api-server"
+    depends_on:
+      - database
     networks:
       - client_server
       - server_database
     ports:
       - "127.0.0.1:3100:3100"
+    environment:
+      DATABASE_USERNAME: "${MONGO_INITDB_ROOT_USERNAME}"
+      DATABASE_PASSWORD: "${MONGO_INITDB_ROOT_PASSWORD}"
 
   database:
     build: ./database
