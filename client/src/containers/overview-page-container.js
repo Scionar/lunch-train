@@ -38,27 +38,10 @@ class OverviewPageContainer extends Component {
   }
 }
 
-const testingData = [
-  {
-    restaurant: 'Sushi bar',
-    leader: 'Jeremy Lancelot',
-    startTime: '11:15',
-    participans: ['Jeremy Woy', 'Jon Snow'],
-    joined: false
-  },
-  {
-    restaurant: 'Sushi bar',
-    leader: 'Jeremy Lancelot',
-    startTime: '11:15',
-    participans: ['Jeremy Woy', 'Jon Snow'],
-    joined: false
-  }
-];
-
 const mapStateToProps = state => {
   return {
     loggedIn: getLoggedInStatus(state),
-    trains: getAllTrains(testingData)
+    trains: getAllTrains(state.trains)
   };
 };
 
