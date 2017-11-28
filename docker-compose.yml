@@ -21,8 +21,12 @@ services:
     networks:
       - client_server
       - server_database
+    expose:
+      - 3100
+      - 8000
     ports:
       - "127.0.0.1:3100:3100"
+      - "127.0.0.1:8000:8000"
     environment:
       DATABASE_USERNAME: "${MONGO_INITDB_ROOT_USERNAME}"
       DATABASE_PASSWORD: "${MONGO_INITDB_ROOT_PASSWORD}"

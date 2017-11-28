@@ -4,7 +4,7 @@ const state = {
   client: null
 };
 
-module.exports.connect = () => {
+module.exports.connect = callback => {
   const connectUrl = `mongodb://${process.env.DATABASE_USERNAME}:${
     process.env.DATABASE_PASSWORD
   }@${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/${
@@ -14,6 +14,7 @@ module.exports.connect = () => {
   MongoClient.connect(connectUrl, function(err, db) {
     if (err) throw new Error(err);
     state.client = db;
+    callback();
   });
 };
 
