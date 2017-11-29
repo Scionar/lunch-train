@@ -10,9 +10,7 @@ export const connect = () => {
   state.socket = openSocket('http://localhost:8000');
 };
 
-const get = () => {
-  return state.socket;
-};
+const get = () => state.socket;
 
 export const getAllTrains = () => {
   this.socket.emit('server:get:allTrains', result => {

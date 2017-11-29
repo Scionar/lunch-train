@@ -53,3 +53,11 @@ Git hooks are implemented with [husky](https://github.com/typicode/husky). Preco
 ### Linting
 
 Project services use [eslint](https://eslint.org/) for linting. It uses [prettier](https://github.com/prettier/prettier)'s rule configuration.
+
+## Database structure
+
+MongoDB server is used as a database. Database has two collections: trains and user joinings.
+
+* **Trains** collection includes lunch place suggestions.
+
+* **Joins** collection includes user joinings as a train ID and user ID pairs.

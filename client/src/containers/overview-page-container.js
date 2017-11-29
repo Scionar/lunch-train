@@ -6,8 +6,22 @@ import Card from '../components/card/card';
 import EmptyOverviewNote from '../components/empty-overview-note/empty-overview-note';
 import getLoggedInStatus from '../helpers/get-logged-in-status';
 import getAllTrains from '../helpers/get-all-trains';
+import updateAllTrains from '../helpers/update-all-trains';
+import updateTrainJoin from '../helpers/update-train-join';
 
 class OverviewPageContainer extends Component {
+  constructor() {
+    super();
+    this.createJoinAction = this.createJoinAction.bind(this);
+    updateAllTrains();
+  }
+
+  createJoinAction(uid, trainId) {
+    return function(joinedStatus) {
+      return updateTrainJoin(joinedStatus, uid, trainId);
+    };
+  }
+
   createTrainCards() {
     const trainList = this.props.trains;
 
@@ -22,7 +36,8 @@ class OverviewPageContainer extends Component {
           leader={train.leader}
           startTime={train.startTime}
           participans={train.participans}
-          joined={train.joined}
+          updateJoinAction={this.createJoinAction(this.props.uid, train._id)}
+          joined={false}
         />
       );
     });
@@ -42,7 +57,8 @@ class OverviewPageContainer extends Component {
 const mapStateToProps = state => {
   return {
     loggedIn: getLoggedInStatus(state),
-    trains: getAllTrains(state.trains)
+    trains: getAllTrains(state.trains),
+    uid: state.user.uid
   };
 };
 

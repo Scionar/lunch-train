@@ -5,10 +5,9 @@ const db = require('../db');
  *
  * @return {Object[]} All lunch train objects.
  */
-module.exports = callback => {
-  const collection = db.get().collection('trains');
-  collection.find({}).toArray((err, docs) => {
-    if (err) throw new Error(err);
-    callback(docs);
-  });
-};
+module.exports = () =>
+  db
+    .get()
+    .collection('trains')
+    .find({})
+    .toArray();

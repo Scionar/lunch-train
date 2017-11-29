@@ -16,6 +16,7 @@ class Card extends Component {
     this.updateLeaveClasses = this.updateLeaveClasses.bind(this);
     this.toggleOpening = this.toggleOpening.bind(this);
     this.toggleJoining = this.toggleJoining.bind(this);
+    this.listParticipants = this.listParticipants.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -52,11 +53,18 @@ class Card extends Component {
 
   toggleJoining() {
     const currentState = this.state.joined;
+    this.props.updateJoinAction(!currentState);
     this.setState({
       joined: !currentState,
       joinClasses: this.updateJoinClasses(!currentState),
       leaveClasses: this.updateLeaveClasses(!currentState)
     });
+  }
+
+  listParticipants() {
+    return this.props.participans
+      ? this.props.participans.map(participant => participant.name).join(', ')
+      : '';
   }
 
   render() {
@@ -67,9 +75,7 @@ class Card extends Component {
           <div className="card__train-leader">{this.props.leader}</div>
           <div className="card__start-time">{this.props.startTime}</div>
         </div>
-        <div className="card__participants">
-          {this.props.participans ? this.props.participans.join(', ') : ''}
-        </div>
+        <div className="card__participants">{this.listParticipants()}</div>
         <div className="card__actions">
           <a onClick={this.toggleJoining} className={this.state.joinClasses}>
             Join
@@ -85,5 +91,9 @@ class Card extends Component {
     );
   }
 }
+
+Card.defaultProps = {
+  updateJoinAction: () => {}
+};
 
 export default Card;
