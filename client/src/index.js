@@ -5,11 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 import Routes from './routes';
-import websocket from './websocket';
-
+import { connect as connectWebsocket } from './websocket';
 import './index.css';
 
-websocket();
+connectWebsocket();
 
 ReactDOM.render(
   <Provider store={store}>

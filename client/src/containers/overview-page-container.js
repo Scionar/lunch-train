@@ -17,6 +17,7 @@ class OverviewPageContainer extends Component {
       return (
         <Card
           key={trainIndex}
+          id={train._id}
           restaurant={train.restaurant}
           leader={train.leader}
           startTime={train.startTime}
