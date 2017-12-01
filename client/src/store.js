@@ -3,15 +3,16 @@ import thunk from 'redux-thunk';
 import { loginReducer } from './actions/login';
 import { logoutReducer } from './actions/logout';
 import { updateTrainsReducer } from './actions/update-trains';
+import { loadState, saveState } from './local-storage';
 
-const initialState = {
+let storeInstance = null;
+
+export const initialState = {
   user: null,
   trains: []
 };
 
-const persistState = localStorage.getItem('reduxState')
-  ? JSON.parse(localStorage.getItem('reduxState'))
-  : initialState;
+const persistState = loadState(initialState);
 
 const rootReducer = (state = persistState, action) => {
   switch (action.type) {
@@ -26,11 +27,23 @@ const rootReducer = (state = persistState, action) => {
   }
 };
 
-let store = createStore(rootReducer, applyMiddleware(thunk));
+const create = () => {
+  storeInstance = createStore(rootReducer, applyMiddleware(thunk));
 
-store.subscribe(() => {
-  console.log(store.getState(), 'Updatet state');
-  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
-});
+  storeInstance.subscribe(() => {
+    const state = storeInstance.getState();
+    saveState(state);
+  });
+};
 
-export default store;
+const clear = () => {
+  storeInstance = null;
+};
+
+const get = () => storeInstance;
+
+export default {
+  create,
+  get,
+  clear
+};
