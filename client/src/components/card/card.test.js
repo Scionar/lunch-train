@@ -3,9 +3,8 @@ import { shallow, mount } from 'enzyme';
 import Card from './card';
 
 describe('Card', () => {
-  it('always renders a div', () => {
+  it('smoketest', () => {
     const wrapper = shallow(<Card />);
-    expect(wrapper.length).toBeGreaterThan(0);
   });
 
   it('has "card" class', () => {
@@ -35,7 +34,7 @@ describe('Card', () => {
     expect(wrapper.find('.join-button').hasClass('button_hidden')).toBe(true);
   });
 
-  it('chages joined state from true to false when clicking leave-button', () => {
+  it('changes joined state from true to false when clicking leave-button', () => {
     const wrapper = mount(<Card />);
     wrapper.find('.join-button').simulate('click');
     wrapper.find('.leave-button').simulate('click');

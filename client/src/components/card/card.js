@@ -6,7 +6,7 @@ class Card extends Component {
     super(props);
     this.state = {
       opened: false,
-      joined: props.joined || false,
+      joined: props.joined,
       cardClasses: this.updateCardClasses(),
       joinClasses: this.updateJoinClasses(props.joined),
       leaveClasses: this.updateLeaveClasses(props.joined)
@@ -21,7 +21,7 @@ class Card extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      joined: nextProps.joined || false
+      joined: nextProps.joined
     });
   }
 
@@ -93,7 +93,8 @@ class Card extends Component {
 }
 
 Card.defaultProps = {
-  updateJoinAction: () => {}
+  updateJoinAction: () => {},
+  joined: false
 };
 
 export default Card;
