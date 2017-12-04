@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import createTrain from '../../helpers/user-action/create-train';
 import './create-train-form.css';
 
 class LoginForm extends Component {
   constructor() {
     super();
     this.state = {
-      loginEmail: '',
-      loginPassword: ''
+      leader: '',
+      restaurantName: '',
+      startTime: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -24,8 +26,12 @@ class LoginForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const restaurantName = this.state.restaurantName;
+    const restaurant = this.state.restaurantName;
     const startTime = this.state.startTime;
+    const leader = this.state.leader;
+    createTrain(restaurant, leader, startTime, () => {
+      this.props.history.push('/');
+    });
   }
 
   handleCancel(event) {
@@ -35,6 +41,15 @@ class LoginForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="create-train-form">
+        <input
+          onChange={this.handleInputChange}
+          value={this.state.leader}
+          name="leader"
+          className="create-train-form__leader text-input"
+          placeholder="Your name"
+          type="textfield"
+        />
+
         <input
           onChange={this.handleInputChange}
           value={this.state.restaurantName}

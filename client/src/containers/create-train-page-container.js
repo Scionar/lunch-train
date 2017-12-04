@@ -11,7 +11,7 @@ class CreateTrainPageContainer extends Component {
     return (
       <Page whiteColor>
         <h1 className="page__title">Create train</h1>
-        <CreateTrainForm />
+        <CreateTrainForm history={this.props.history} />
       </Page>
     );
   }

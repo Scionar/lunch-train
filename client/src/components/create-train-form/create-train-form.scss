@@ -4,7 +4,11 @@
   align-items: center;
 }
 
-.create-train-form__restaurant-name {
+.create-train-form__leader {
+  margin: 1rem 0 0;
+}
+
+.create-train-form__restaurant {
   margin: 1rem 0 0;
 }
 
@@ -17,5 +21,5 @@
 }
 
 .create-train-form__cancel.button {
-  margin: 1rem 0 0;
+  margin: 1rem 0 2rem;
 }

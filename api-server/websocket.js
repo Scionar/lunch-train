@@ -1,6 +1,8 @@
 const socketIO = require('socket.io');
 const getAllTrains = require('./helpers/get-all-trains');
 const updateJoinedStatus = require('./helpers/update-joined-status');
+const personalizeTrainData = require('./helpers/personalize-train-data');
+const createTrain = require('./helpers/create-train');
 
 const state = {
   webSocket: null
@@ -12,10 +14,12 @@ module.exports.create = server => {
   const webSocket = socketIO(server);
 
   webSocket.on('connection', socket => {
-    socket.on('server:get:allTrains', fn => {
-      getAllTrains(result => {
-        fn(result);
-      });
+    socket.on('server:get:allTrains', (data, fn) => {
+      getAllTrains()
+        .then(trains => personalizeTrainData(trains, data.uid))
+        .then(result => {
+          fn(result);
+        });
     });
 
     socket.on('server:update:joinedStatus', (data, fn) => {
@@ -24,9 +28,15 @@ module.exports.create = server => {
       });
     });
 
-    socket.on('disconnect', () => {
-      console.log('Websocket disconnected.');
+    socket.on('server:create:train', (data, fn) => {
+      console.log('At socket server:create:train');
+      createTrain(data.train).then(() => {
+        console.log('At callback after createTrain');
+        fn();
+      });
     });
+
+    socket.on('disconnect', () => {});
   });
 
   webSocket.listen(8000);
