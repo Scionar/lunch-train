@@ -28,12 +28,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "precommit": "npm run fix-prettier && CI=true npm run test && npm run lint",
+    "prepush": "npm run fix-prettier && CI=true npm run test && npm run lint",
     "eject": "react-scripts eject",
-    "verify-prettier": "prettier --list-different \"src/**/*.{js,jsx,css,json}\"",
+    "verify-prettier":
+      "prettier --list-different \"src/**/*.{js,jsx,css,json}\"",
     "fix-prettier": "prettier --write \"src/**/*.{js,jsx,scss,json}\"",
     "lint": "eslint ./src",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css":
+      "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   }
 }
