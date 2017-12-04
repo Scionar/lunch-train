@@ -32,6 +32,7 @@ const create = () => {
 
   storeInstance.subscribe(() => {
     const state = storeInstance.getState();
+    console.log(state, 'Updatet state');
     saveState(state);
   });
 };
