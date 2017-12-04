@@ -10,8 +10,8 @@ export const auth = firebase.auth();
 
 auth.onAuthStateChanged(user => {
   if (user) {
-    store.dispatch(loginAction(user));
+    store.get().dispatch(loginAction(user));
   } else {
-    store.dispatch(logoutAction(user));
+    store.get().dispatch(logoutAction(user));
   }
 });

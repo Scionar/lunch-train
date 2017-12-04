@@ -5,13 +5,14 @@ import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 import Routes from './routes';
-import { connect as connectWebsocket } from './websocket';
+import socket from './websocket';
 import './index.css';
 
-connectWebsocket();
+socket.connect();
+store.create();
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={store.get()}>
     <BrowserRouter>
       <Routes />
     </BrowserRouter>
