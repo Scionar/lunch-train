@@ -1,0 +1,17 @@
+.add-button {
+  background-color: #808080;
+  border-radius: 2.5rem;
+  box-shadow: 0 0 0.5rem 0 #000;
+  height: 5rem;
+  position: relative;
+  margin: 0 auto 1rem auto;
+  width: 5rem; }
+  .add-button:before {
+    content: '+';
+    color: #fff;
+    font-size: 3rem;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); }

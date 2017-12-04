@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Page from '../components/page/page';
 import Card from '../components/card/card';
+import AddButton from '../components/add-button/add-button';
 import EmptyOverviewNote from '../components/empty-overview-note/empty-overview-note';
 import updateAllTrains from '../helpers/update-state/update-all-trains';
 import joinTrain from '../helpers/user-action/join-train';
@@ -53,7 +54,12 @@ class OverviewPageContainer extends Component {
 
     return (
       <div>
-        <Page>{this.createTrainCards()}</Page>
+        <Page>
+          {this.createTrainCards()}
+          <Link to="/create">
+            <AddButton />
+          </Link>
+        </Page>
       </div>
     );
   }
