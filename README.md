@@ -34,6 +34,12 @@ password environment variables.
 * **SERVER_PORT** Port which server service uses.
 * **SERVER_PORT_OUT** If Docker compose is used, server port is mapped to this
   port at host machine.
+* **DATABASE_CONNECTION_HOST** Server services target host when connecting to
+  database service. This changes, depending on Docker configuration. Use
+  database service's service identifier as hostname if connecting with
+  Docker-compose.
+* **DATABASE_CONNECTION_PORT** Same as connection host, but with port. Depends
+  on Docker configuration.
 
 **API server configuration and credentials**
 
