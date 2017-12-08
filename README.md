@@ -29,6 +29,11 @@ password environment variables.
 * **CLIENT_PORT** Port which client service uses.
 * **CLIENT_PORT_OUT** If Docker compose is used, client port is mapped to this
   port at host machine.
+* **SERVER_HOST** Host which server service uses to listen connections. If used
+  inside Docker, prefer to use `0.0.0.0` as a localhost address.
+* **SERVER_PORT** Port which server service uses.
+* **SERVER_PORT_OUT** If Docker compose is used, server port is mapped to this
+  port at host machine.
 
 **API server configuration and credentials**
 

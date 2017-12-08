@@ -30,10 +30,10 @@ services:
       - client_server
       - server_database
     expose:
-      - 3100
+      - "${SERVER_PORT}"
       - 8000
     ports:
-      - "127.0.0.1:3100:3100"
+      - "127.0.0.1:${SERVER_PORT_OUT}:${SERVER_PORT}"
       - "127.0.0.1:8000:8000"
     environment:
       DATABASE_USERNAME: "${MONGO_INITDB_ROOT_USERNAME}"
