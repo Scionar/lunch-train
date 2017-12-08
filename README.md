@@ -26,6 +26,7 @@ password environment variables.
 * **DATABASE_ROOT_PASSWORD** Database root user's password. Change this!
 * **DATABASE_PORT_OUT** If Docker compose is used, database port is mapped to
   this port at host machine.
+* **DATABASE_NAME** Name of the database to create.
 * **CLIENT_PORT** Port which client service uses.
 * **CLIENT_PORT_OUT** If Docker compose is used, client port is mapped to this
   port at host machine.
