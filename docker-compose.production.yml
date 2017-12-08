@@ -9,8 +9,16 @@ services:
       - api-server
     networks:
       - client_server
+    expose:
+      - "${CLIENT_PORT}"
     ports:
-      - "127.0.0.1:80:3000"
+      - "127.0.0.1:${CLIENT_PORT_OUT}:${CLIENT_PORT}"
+    command: ["chmod", "+x", "./environment-specification.sh"]
+    command: ["./environment-specification.sh"]
+    environment:
+      NODE_ENV: production
+      CLIENT_PORT: "${CLIENT_PORT}"
+      ENVIRONMENT: production
 
   api-server:
     build: ./api-server

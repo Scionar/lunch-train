@@ -2,7 +2,7 @@
   "name": "lunch-train-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/Scionar/lunch-train",
+  "homepage": ".",
   "dependencies": {
     "firebase": "^4.6.2",
     "node-sass-chokidar": "^0.0.3",
@@ -13,6 +13,7 @@
     "react-scripts": "1.0.15",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "serve": "^6.4.1",
     "socket.io-client": "^2.0.4"
   },
   "devDependencies": {
@@ -28,6 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "start-development": "PORT=${CLIENT_PORT} npm run start",
+    "start-production": "serve -s build -p ${CLIENT_PORT}",
     "prepush": "npm run fix-prettier && CI=true npm run test && npm run lint",
     "eject": "react-scripts eject",
     "verify-prettier":

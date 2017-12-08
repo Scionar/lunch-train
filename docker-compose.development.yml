@@ -11,9 +11,14 @@ services:
     networks:
       - client_server
     ports:
-      - "127.0.0.1:80:3000"
+      - "127.0.0.1:${CLIENT_PORT_OUT}:${CLIENT_PORT}"
     working_dir: /app
-    command: sh -c "yarn && yarn start"
+    command: ["chmod", "+x", "./environment-specification.sh"]
+    command: ["./environment-specification.sh"]
+    environment:
+      NODE_ENV: development
+      CLIENT_PORT: "${CLIENT_PORT}"
+      ENVIRONMENT: development
 
   api-server:
     image: node:8-alpine
