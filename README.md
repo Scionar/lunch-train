@@ -22,8 +22,10 @@ Copy example file `./client/src/credentials.json.example` to
 Copy example file `./.env.example` to `./.env`. Change at least username and
 password environment variables.
 
-* **MONGO_INITDB_ROOT_USERNAME** Database root username. Change this!
-* **MONGO_INITDB_ROOT_PASSWORD** Database root user's password. Change this!
+* **DATABASE_ROOT_USERNAME** Database root username. Change this!
+* **DATABASE_ROOT_PASSWORD** Database root user's password. Change this!
+* **DATABASE_PORT_OUT** If Docker compose is used, database port is mapped to
+  this port at host machine.
 * **CLIENT_PORT** Port which client service uses.
 * **CLIENT_PORT_OUT** If Docker compose is used, client port is mapped to this
   port at host machine.
@@ -34,9 +36,9 @@ Copy example file `./api-server/.env.example` to `./api-server/.env`. No need to
 change the configuration. By default authentication credentials are overwritten
 by docker-compose configuration. This file is not included to Git for safety.
 
-## Build with local configuration
+## Build with development configuration
 
-* Run in project root command `yarn run docker-local`.
+* Run in project root command `yarn run docker-development`.
 * Check in browser [http://localhost:80](http://localhost:80).
 
 Speciality of local configuration is that there is no Docker image build. App

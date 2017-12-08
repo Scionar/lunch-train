@@ -48,7 +48,7 @@ services:
     expose:
       - 27017
     ports:
-      - "127.0.0.1:3200:27017"
+      - "127.0.0.1:${DATABASE_PORT_OUT}:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME
       - MONGO_INITDB_ROOT_PASSWORD
