@@ -31,10 +31,10 @@ services:
       - server_database
     expose:
       - "${SERVER_PORT}"
-      - 8000
+      - "${SERVER_SOCKET_PORT}"
     ports:
       - "127.0.0.1:${SERVER_PORT_OUT}:${SERVER_PORT}"
-      - "127.0.0.1:8000:8000"
+      - "127.0.0.1:${SERVER_SOCKET_PORT_OUT}:${SERVER_SOCKET_PORT}"
     environment:
       DATABASE_USERNAME: "${MONGO_INITDB_ROOT_USERNAME}"
       DATABASE_PASSWORD: "${MONGO_INITDB_ROOT_PASSWORD}"

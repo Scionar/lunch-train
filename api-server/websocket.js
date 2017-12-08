@@ -39,7 +39,7 @@ module.exports.create = server => {
     socket.on('disconnect', () => {});
   });
 
-  webSocket.listen(8000);
+  webSocket.listen(process.env.SERVER_SOCKET_PORT);
 
   state.webSocket = webSocket;
 };

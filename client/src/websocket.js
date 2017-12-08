@@ -5,7 +5,7 @@ const state = {
 };
 
 export const connect = () => {
-  state.socket = openSocket('http://localhost:8000');
+  state.socket = openSocket(`http://localhost:${SERVER_SOCKET_PORT_OUT}`);
 };
 
 const get = () => state.socket;
