@@ -41,8 +41,8 @@ services:
     working_dir: /app
     command: sh -c "yarn install && yarn start"
     environment:
-      DATABASE_USERNAME: "${MONGO_INITDB_ROOT_USERNAME}"
-      DATABASE_PASSWORD: "${MONGO_INITDB_ROOT_PASSWORD}"
+      DATABASE_USERNAME: "${DATABASE_ROOT_USERNAME}"
+      DATABASE_PASSWORD: "${DATABASE_ROOT_PASSWORD}"
 
   database:
     image: mongo:3.4
