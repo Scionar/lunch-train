@@ -9,7 +9,7 @@ module.exports.connect = callback => {
     process.env.DATABASE_ROOT_PASSWORD
   }@${process.env.DATABASE_CONNECTION_HOST}:${
     process.env.DATABASE_CONNECTION_PORT
-  }/${process.env.DATABASE_ROOT_USERNAME}?authSource=admin`;
+  }/${process.env.DATABASE_NAME}?authSource=admin`;
 
   MongoClient.connect(connectUrl, function(err, db) {
     if (err) throw new Error(err);
