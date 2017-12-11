@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store';
 import Routes from './routes';
@@ -13,9 +12,7 @@ store.create();
 
 ReactDOM.render(
   <Provider store={store.get()}>
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+    <Routes />
   </Provider>,
   document.getElementById('root')
 );

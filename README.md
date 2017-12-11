@@ -13,14 +13,14 @@ see who are interested.
 
 **Firebase credentials**
 
-Copy example file `./client/src/credentials.json.example` to
-`./client/src/credentials.json`. Copy Firebase configurations from your
+Copy example file `/client/src/credentials.json.example` to
+`/client/src/credentials.json`. Copy Firebase configurations from your
 [Firebase Console](https://console.firebase.google.com) under firebase-property.
 
 **Client, API server and database configuration**
 
-Copy example file `./.env.example` to `./.env`. Change at least username and
-password environment variables.
+Copy example file `/.env.example` to `/.env`. Change at least username and
+password environment variables. This file is not included to Git for safety.
 
 * **DATABASE_ROOT_USERNAME** Database root username. Change this!
 * **DATABASE_ROOT_PASSWORD** Database root user's password. Change this!
@@ -45,12 +45,6 @@ password environment variables.
 * **DATABASE_CONNECTION_PORT** Same as connection host, but with port. Depends
   on Docker configuration.
 
-**API server configuration and credentials**
-
-Copy example file `./api-server/.env.example` to `./api-server/.env`. No need to
-change the configuration. By default authentication credentials are overwritten
-by docker-compose configuration. This file is not included to Git for safety.
-
 ## Build with development configuration
 
 * Run in project root command `yarn run docker-development`.
@@ -71,7 +65,8 @@ docker run -p 3100:3100 -d api-server
 ## Build with production configuration
 
 * Run in project root command `yarn run docker-production`.
-* Check in browser http://localhost:80.
+* Check in browser http://localhost:80. Or with other port which is
+  **CLIENT_PORT_OUT** in environment variables.
 
 ## Development
 
@@ -81,19 +76,26 @@ specific configurations.
 ### Git hooks
 
 Git hooks are implemented with [husky](https://github.com/typicode/husky).
-Precommit hooks should check linting status before commit and prevent action if
-there is errors.
+Prepush hooks should check linting and test status before push and prevent
+action if there is an errors.
 
 ### Linting
 
 Project services use [eslint](https://eslint.org/) for linting. It uses
 [prettier](https://github.com/prettier/prettier)'s rule configuration.
 
-## Database structure
+### Database structure
 
 MongoDB server is used as a database. Database has two collections: trains and
 user joinings.
 
 * **Trains** collection includes lunch place suggestions.
-
 * **Joins** collection includes user joinings as a train ID and user ID pairs.
+
+### Testing
+
+Test are done with Jest. Unit tests are separated into services. End-to-end
+tests are in client service. This is because interactions are triggered trough
+UI components. In integration tests separated environment variables are used. To
+set them copy `/.env.testing.example` to `/.env.testing`. Set variables as they
+would seen from host machine.

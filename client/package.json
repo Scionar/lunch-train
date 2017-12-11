@@ -4,6 +4,7 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "firebase": "^4.6.2",
     "node-sass-chokidar": "^0.0.3",
     "react": "^16.0.0",
@@ -29,16 +30,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test-integration": "npm test -- --testMatch=\"$PWD/src/**/*.integration-test.js\" --setupTestFrameworkScriptFile=\"$PWD/src/test-utils/extendTimeouts.js\"",
     "start-development": "PORT=${CLIENT_PORT} npm run start",
     "start-production": "serve -s build -p ${CLIENT_PORT}",
     "prepush": "npm run fix-prettier && CI=true npm run test && npm run lint",
     "eject": "react-scripts eject",
-    "verify-prettier":
-      "prettier --list-different \"src/**/*.{js,jsx,css,json}\"",
+    "verify-prettier": "prettier --list-different \"src/**/*.{js,jsx,css,json}\"",
     "fix-prettier": "prettier --write \"src/**/*.{js,jsx,scss,json}\"",
     "lint": "eslint ./src",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css":
-      "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   }
 }
