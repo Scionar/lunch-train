@@ -1,4 +1,5 @@
 const db = require('../db');
+const deleteJoinsOfUser = require('./delete-joins-of-user');
 
 /**
  * If user is joining, add join. Id not, delete document.
@@ -10,8 +11,11 @@ const db = require('../db');
  * @return {Promise} Promise from database action.
  */
 module.exports = (uid, trainId, status) => {
-  if (!status) return deleteJoin(trainId, uid);
-  return addJoin(trainId, uid);
+  if (!status) {
+    return deleteJoin(trainId, uid);
+  } else {
+    return deleteJoinsOfUser(uid).then(() => addJoin(trainId, uid));
+  }
 };
 
 /**
