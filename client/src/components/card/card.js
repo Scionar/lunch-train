@@ -5,39 +5,34 @@ class Card extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      opened: false,
-      joined: props.joined,
-      cardClasses: this.updateCardClasses(),
-      joinClasses: this.updateJoinClasses(props.joined),
-      leaveClasses: this.updateLeaveClasses(props.joined)
+      opened: false
     };
-    this.updateCardClasses = this.updateCardClasses.bind(this);
-    this.updateJoinClasses = this.updateJoinClasses.bind(this);
-    this.updateLeaveClasses = this.updateLeaveClasses.bind(this);
+    this.getCardClasses = this.getCardClasses.bind(this);
+    this.getJoinClasses = this.getJoinClasses.bind(this);
+    this.getLeaveClasses = this.getLeaveClasses.bind(this);
     this.toggleOpening = this.toggleOpening.bind(this);
     this.toggleJoining = this.toggleJoining.bind(this);
     this.listParticipants = this.listParticipants.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      joined: nextProps.joined
-    });
-  }
-
-  updateCardClasses(opened) {
+  getCardClasses() {
+    const opened = this.state.opened;
+    const joined = this.props.joined;
     let result = ['card'];
     if (opened) result.push('card_opened');
+    if (joined) result.push('card_joined');
     return result.join(' ');
   }
 
-  updateJoinClasses(joined) {
+  getJoinClasses() {
+    const joined = this.props.joined;
     let result = ['join-button', 'button', 'button_slim'];
     if (joined) result.push('button_hidden');
     return result.join(' ');
   }
 
-  updateLeaveClasses(joined) {
+  getLeaveClasses() {
+    const joined = this.props.joined;
     let result = ['leave-button', 'button', 'button_slim'];
     if (!joined) result.push('button_hidden');
     return result.join(' ');
@@ -46,19 +41,13 @@ class Card extends Component {
   toggleOpening() {
     const currentState = this.state.opened;
     this.setState({
-      opened: !currentState,
-      cardClasses: this.updateCardClasses(!currentState)
+      opened: !currentState
     });
   }
 
   toggleJoining() {
-    const currentState = this.state.joined;
+    const currentState = this.props.joined;
     this.props.updateJoinAction(!currentState);
-    this.setState({
-      joined: !currentState,
-      joinClasses: this.updateJoinClasses(!currentState),
-      leaveClasses: this.updateLeaveClasses(!currentState)
-    });
   }
 
   listParticipants() {
@@ -69,7 +58,7 @@ class Card extends Component {
 
   render() {
     return (
-      <div className={this.state.cardClasses}>
+      <div className={this.getCardClasses()}>
         <div className="card__header">
           <h2 className="card__restaurant-name">{this.props.restaurant}</h2>
           <div className="card__train-leader">{this.props.leader}</div>
@@ -77,10 +66,10 @@ class Card extends Component {
         </div>
         <div className="card__participants">{this.listParticipants()}</div>
         <div className="card__actions">
-          <a onClick={this.toggleJoining} className={this.state.joinClasses}>
+          <a onClick={this.toggleJoining} className={this.getJoinClasses()}>
             Join
           </a>
-          <a onClick={this.toggleJoining} className={this.state.leaveClasses}>
+          <a onClick={this.toggleJoining} className={this.getLeaveClasses()}>
             Leave
           </a>
           <a onClick={this.toggleOpening} className="button button_slim">

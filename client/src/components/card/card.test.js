@@ -19,32 +19,28 @@ describe('Card', () => {
     expect(wrapper.render().hasClass('card_opened')).toBe(true);
   });
 
-  it('chages joined state from false to true when clicking join-button', () => {
-    const wrapper = mount(<Card />);
-    expect(wrapper.state('joined')).toBe(false);
-    wrapper.find('.join-button').simulate('click');
-    expect(wrapper.state('joined')).toBe(true);
+  it('gets "card_joined" class if card has joined prop true', () => {
+    const wrapper = mount(<Card joined={true} />);
+    expect(wrapper.render().hasClass('card_joined')).toBe(true);
   });
 
-  it('adds hide modifier to join-button when joined state is true', () => {
-    const wrapper = mount(<Card />);
-    expect(wrapper.state('joined')).toBe(false);
+  it('does not add hide modifier to join-button when joined prop is true', () => {
+    const wrapper = mount(<Card joined={false} />);
     expect(wrapper.find('.join-button').hasClass('button_hidden')).toBe(false);
-    wrapper.find('.join-button').simulate('click');
+  });
+
+  it('adds hide modifier to join-button when joined prop is true', () => {
+    const wrapper = mount(<Card joined={true} />);
     expect(wrapper.find('.join-button').hasClass('button_hidden')).toBe(true);
   });
 
-  it('changes joined state from true to false when clicking leave-button', () => {
-    const wrapper = mount(<Card />);
-    wrapper.find('.join-button').simulate('click');
-    wrapper.find('.leave-button').simulate('click');
-    expect(wrapper.state('joined')).toBe(false);
+  it('adds hide modifier to leave-button when joined state is false', () => {
+    const wrapper = mount(<Card joined={false} />);
+    expect(wrapper.find('.leave-button').hasClass('button_hidden')).toBe(true);
   });
 
-  it('adds hide modifier to leave-button when joined state is false', () => {
-    const wrapper = mount(<Card />);
-    expect(wrapper.find('.leave-button').hasClass('button_hidden')).toBe(true);
-    wrapper.find('.join-button').simulate('click');
+  it('does not add hide modifier to leave-button when joined state is false', () => {
+    const wrapper = mount(<Card joined={true} />);
     expect(wrapper.find('.leave-button').hasClass('button_hidden')).toBe(false);
   });
 });
