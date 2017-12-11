@@ -6,5 +6,8 @@
 .login-form__password {
   margin: 1rem 0 0; }
 
-.login-form__submit {
+.login-form__submit.button {
+  margin: 1rem 0 0; }
+
+.login-form__cancel.button {
   margin: 1rem 0 0; }

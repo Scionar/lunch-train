@@ -21,6 +21,7 @@ p {
   border: 1px solid #b3b3b3;
   border-radius: 0.25rem;
   color: #000;
+  font-size: 1rem;
   padding: 1rem 2rem; }
 
 .button {
@@ -30,6 +31,7 @@ p {
   cursor: pointer;
   color: #fff;
   display: inline-block;
+  font-size: 1rem;
   padding: 0.5rem 1rem;
   margin: 0.25rem; }
 
