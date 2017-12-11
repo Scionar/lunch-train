@@ -5,11 +5,11 @@ const state = {
 };
 
 module.exports.connect = callback => {
-  const connectUrl = `mongodb://${process.env.DATABASE_USERNAME}:${
-    process.env.DATABASE_PASSWORD
-  }@${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/${
-    process.env.DATABASE_NAME
-  }?authSource=admin`;
+  const connectUrl = `mongodb://${process.env.DATABASE_ROOT_USERNAME}:${
+    process.env.DATABASE_ROOT_PASSWORD
+  }@${process.env.DATABASE_CONNECTION_HOST}:${
+    process.env.DATABASE_CONNECTION_PORT
+  }/${process.env.DATABASE_ROOT_USERNAME}?authSource=admin`;
 
   MongoClient.connect(connectUrl, function(err, db) {
     if (err) throw new Error(err);

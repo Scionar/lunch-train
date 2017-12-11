@@ -1,0 +1,63 @@
+version: "3"
+services:
+
+  client:
+    image: node:8-alpine
+    container_name: "lunch-train_client"
+    depends_on:
+      - api-server
+    volumes:
+      - ./client:/app
+    networks:
+      - client_server
+    expose:
+      - "${CLIENT_PORT}"
+    ports:
+      - "127.0.0.1:${CLIENT_PORT_OUT}:${CLIENT_PORT}"
+    working_dir: /app
+    command: ["chmod", "+x", "./environment-specification.sh"]
+    command: ["./environment-specification.sh"]
+    environment:
+      NODE_ENV: development
+      CLIENT_PORT: "${CLIENT_PORT}"
+      ENVIRONMENT: development
+
+  api-server:
+    image: node:8-alpine
+    container_name: "lunch-train_api-server"
+    depends_on:
+      - database
+    volumes:
+      - ./api-server:/app
+    networks:
+      - client_server
+      - server_database
+    expose:
+      - "${SERVER_PORT}"
+      - "${SERVER_SOCKET_PORT}"
+    ports:
+      - "127.0.0.1:${SERVER_PORT_OUT}:${SERVER_PORT}"
+      - "127.0.0.1:${SERVER_SOCKET_PORT_OUT}:${SERVER_SOCKET_PORT}"
+    working_dir: /app
+    command: sh -c "yarn install && yarn start"
+    environment:
+      DATABASE_USERNAME: "${DATABASE_ROOT_USERNAME}"
+      DATABASE_PASSWORD: "${DATABASE_ROOT_PASSWORD}"
+      ENVIRONMENT: development
+
+  database:
+    image: mongo:3.4
+    container_name: "lunch-train_database"
+    networks:
+      - server_database
+    expose:
+      - 27017
+    ports:
+      - "127.0.0.1:${DATABASE_PORT_OUT}:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "${DATABASE_ROOT_USERNAME}"
+      MONGO_INITDB_ROOT_PASSWORD: "${DATABASE_ROOT_USERNAME}"
+
+networks:
+  client_server:
+  server_database:

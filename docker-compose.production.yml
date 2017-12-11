@@ -1,0 +1,59 @@
+version: "3"
+services:
+
+  client:
+    build: ./client
+    image: lunch-train_client:1.0
+    container_name: "lunch-train_client"
+    depends_on:
+      - api-server
+    networks:
+      - client_server
+    expose:
+      - "${CLIENT_PORT}"
+    ports:
+      - "127.0.0.1:${CLIENT_PORT_OUT}:${CLIENT_PORT}"
+    command: ["chmod", "+x", "./environment-specification.sh"]
+    command: ["./environment-specification.sh"]
+    environment:
+      NODE_ENV: production
+      CLIENT_PORT: "${CLIENT_PORT}"
+      ENVIRONMENT: production
+
+  api-server:
+    build: ./api-server
+    image: lunch-train_api-server:1.0
+    container_name: "lunch-train_api-server"
+    depends_on:
+      - database
+    networks:
+      - client_server
+      - server_database
+    expose:
+      - "${SERVER_PORT}"
+      - "${SERVER_SOCKET_PORT}"
+    ports:
+      - "127.0.0.1:${SERVER_PORT_OUT}:${SERVER_PORT}"
+      - "127.0.0.1:${SERVER_SOCKET_PORT_OUT}:${SERVER_SOCKET_PORT}"
+    environment:
+      DATABASE_USERNAME: "${DATABASE_ROOT_USERNAME}"
+      DATABASE_PASSWORD: "${DATABASE_ROOT_PASSWORD}"
+      ENVIRONMENT: production
+
+  database:
+    build: ./database
+    image: lunch-train_database:1.0
+    container_name: "lunch-train_database"
+    networks:
+      - server_database
+    expose:
+      - 27017
+    ports:
+      - "127.0.0.1:${DATABASE_PORT_OUT}:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "${DATABASE_ROOT_USERNAME}"
+      MONGO_INITDB_ROOT_PASSWORD: "${DATABASE_ROOT_USERNAME}"
+
+networks:
+  client_server:
+  server_database:
