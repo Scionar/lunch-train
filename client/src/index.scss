@@ -2,57 +2,57 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-	background-color: $color_grey;
-	font-size: $font_size;
+  background-color: $color_grey;
+  font-size: $font_size;
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
-	font-size: 1rem;
-	margin: 0;
-	padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 p {
-	font-size: inherit;
-	line-height: 100%;
+  font-size: inherit;
+  line-height: 100%;
 }
 
 .text-input {
-	background-color: $color_white;
-	border: 1px solid $color_grey;
-	border-radius: 0.25rem;
-	color: $color_black;
-	font-size: 1rem;
-	padding: 1rem 2rem;
+  background-color: $color_white;
+  border: 1px solid $color_grey;
+  border-radius: 0.25rem;
+  color: $color_black;
+  font-size: 1rem;
+  padding: 1rem 2rem;
 }
 
 .button {
-	background-color: $color_dark-grey;
-	border: 0;
-	border-radius: 0.25rem;
-	cursor: pointer;
-	color: $color_white;
-	display: inline-block;
-	font-size: 1rem;
-	padding: 0.5rem 1rem;
-	margin: 0.25rem;
+  background-color: $color_dark-grey;
+  border: 0;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  color: $color_white;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
 }
 
 .button_hidden {
-	display: none;
+  display: none;
 }
 
 .button_slim {
-	background-color: transparent;
-	color: $color_black;
-	transition: 0.1s;
+  background-color: transparent;
+  color: $color_black;
+  transition: 0.1s;
 
-	&:hover {
-		background-color: $color_black-25;
-	}
+  &:hover {
+    background-color: $color_black-25;
+  }
 }
