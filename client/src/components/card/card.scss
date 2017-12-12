@@ -2,20 +2,24 @@
 
 .card {
   background-color: $color_white;
-  box-shadow: 0 0 0.5rem 0 $color_black;
+  box-shadow: 0 0 1rem 0 $color_black-50;
   margin: 0 0 1rem;
   width: 100%;
 }
 
 .card__header {
   align-items: flex-start;
-  background-color: $color_dark-grey;
+  background-color: $color_grey;
   color: $color_white;
   display: flex;
   flex-direction: column;
   height: 6.5rem;
   justify-content: space-between;
   padding: 0.5rem 0.5rem 0.8rem;
+
+  .card_joined & {
+    background-color: #ff9966;
+  }
 }
 
 .card__restaurant-name {

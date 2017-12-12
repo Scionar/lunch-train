@@ -1,9 +1,9 @@
 @import '../../variables';
 
 .add-button {
-  background-color: $color_dark-grey;
+  background-color: $color_green;
   border-radius: 2.5rem;
-  box-shadow: 0 0 0.5rem 0 $color_black;
+  box-shadow: 0 0 1rem 0 $color_black-50;
   height: 5rem;
   position: relative;
   margin: 0 auto 1rem auto;

@@ -6,7 +6,8 @@
 }
 
 html {
-  background-color: $color_grey;
+  /* Background pattern from Subtle Patterns */
+  background-image: url('/background.png');
   font-size: $font_size;
 }
 
