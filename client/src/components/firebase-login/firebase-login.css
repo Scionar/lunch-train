@@ -1,0 +1,30 @@
+.firebase-login .firebaseui-idp-list {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.firebase-login .firebaseui-list-item {
+  text-align: center;
+  margin: 1rem 0 0; }
+  .firebase-login .firebaseui-list-item:first-of-type {
+    margin: 0; }
+
+.firebase-login .mdl-button {
+  align-items: center;
+  background: #b3b3b3;
+  border-radius: 0.25rem;
+  border: 0px;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.75rem;
+  height: 2rem;
+  padding: 0.5rem 1rem;
+  width: 15rem; }
+
+.firebase-login .firebaseui-idp-icon-wrapper img {
+  display: inline-block;
+  height: 1rem;
+  margin: 0 0.75rem 0 0; }
+
+.firebase-login .firebaseui-idp-text-short {
+  display: none; }
