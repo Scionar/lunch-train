@@ -4,6 +4,7 @@ import Card from './card';
 
 describe('Card', () => {
   it('smoketest', () => {
+    // eslint-disable-next-line no-unused-vars
     const wrapper = shallow(<Card />);
   });
 

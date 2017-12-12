@@ -7,9 +7,9 @@ const db = require('../db');
  *
  * @return {Object[]} All join documents with right uid.
  */
-module.exports = () =>
+module.exports = uid =>
   db
     .get()
     .collection('joins')
-    .find({})
+    .find({ uid })
     .toArray();

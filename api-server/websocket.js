@@ -2,6 +2,7 @@ const socketIO = require('socket.io');
 const getAllTrains = require('./helpers/get-all-trains');
 const updateJoinedStatus = require('./helpers/update-joined-status');
 const personalizeTrainData = require('./helpers/personalize-train-data');
+const addJoinedUsers = require('./helpers/add-joined-users');
 const createTrain = require('./helpers/create-train');
 
 const state = {
@@ -17,13 +18,19 @@ module.exports.create = server => {
     socket.on('server:get:allTrains', (data, fn) => {
       getAllTrains()
         .then(trains => personalizeTrainData(trains, data.uid))
+        .then(trains => addJoinedUsers(trains, data.uid))
         .then(result => {
           fn(result);
         });
     });
 
     socket.on('server:update:joinedStatus', (data, fn) => {
-      updateJoinedStatus(data.uid, data.trainId, data.joinStatus).then(() => {
+      updateJoinedStatus(
+        data.uid,
+        data.name,
+        data.trainId,
+        data.joinStatus
+      ).then(() => {
         fn();
       });
     });

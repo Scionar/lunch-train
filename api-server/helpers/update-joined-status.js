@@ -10,22 +10,22 @@ const deleteJoinsOfUser = require('./delete-joins-of-user');
  *
  * @return {Promise} Promise from database action.
  */
-module.exports = (uid, trainId, status) => {
+module.exports = (uid, name, trainId, status) => {
   if (!status) {
     return deleteJoin(trainId, uid);
   } else {
-    return deleteJoinsOfUser(uid).then(() => addJoin(trainId, uid));
+    return deleteJoinsOfUser(uid).then(() => addJoin(trainId, uid, name));
   }
 };
 
 /**
  * Add join to database.
  */
-const addJoin = (trainId, uid) =>
+const addJoin = (trainId, uid, name) =>
   db
     .get()
     .collection('joins')
-    .insert({ trainId, uid });
+    .insert({ trainId, uid, name });
 
 /**
  * Remove join from database.

@@ -19,9 +19,9 @@ class OverviewPageContainer extends Component {
     updateAllTrains();
   }
 
-  createJoinAction(uid, trainId) {
+  createJoinAction(uid, name, trainId) {
     return function(newStatus) {
-      newStatus ? joinTrain(uid, trainId) : leaveTrain(uid, trainId);
+      newStatus ? joinTrain(uid, name, trainId) : leaveTrain(uid, trainId);
     };
   }
 
@@ -38,9 +38,10 @@ class OverviewPageContainer extends Component {
           restaurant={train.restaurant}
           leader={train.leader}
           startTime={train.startTime}
-          participans={train.participans}
+          participants={train.participants}
           updateJoinAction={this.createJoinAction(
             this.props.user.uid,
+            this.props.user.displayName,
             train._id
           )}
           joined={train.joined}

@@ -1,12 +1,12 @@
 import socket from '../../websocket';
 import updateAllTrains from '../update-state/update-all-trains';
 
-const joinTrain = (uid, trainId, callback) => {
+const joinTrain = (uid, name, trainId, callback) => {
   socket
     .get()
     .emit(
       'server:update:joinedStatus',
-      { joinStatus: true, uid, trainId },
+      { joinStatus: true, uid, trainId, name },
       () => {
         updateAllTrains(callback);
       }

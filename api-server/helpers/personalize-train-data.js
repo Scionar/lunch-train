@@ -1,4 +1,4 @@
-const getAllJoinedStatuses = require('./get-all-joined-statuses');
+const getUserJoinedStatuses = require('./get-user-joined-statuses');
 
 /**
  * Personalize user data.
@@ -13,7 +13,7 @@ const getAllJoinedStatuses = require('./get-all-joined-statuses');
  */
 module.exports = (trains, uid) => {
   if (uid !== undefined) {
-    return getAllJoinedStatuses(uid)
+    return getUserJoinedStatuses(uid)
       .then(result => result.map(join => join.trainId)) // Flat joined statuses to an array of train IDs.
       .then(joined =>
         trains.map(train => {
