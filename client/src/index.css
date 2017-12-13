@@ -23,7 +23,8 @@ p {
   border-radius: 0.25rem;
   color: #000;
   font-size: 1rem;
-  padding: 1rem 2rem; }
+  padding: 1rem 2rem;
+  max-width: 100%; }
 
 .button {
   background-color: #808080;

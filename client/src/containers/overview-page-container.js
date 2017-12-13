@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
+import moment from 'moment';
 import Page from '../components/page/page';
 import Card from '../components/card/card';
 import AddButton from '../components/add-button/add-button';
@@ -31,13 +32,15 @@ class OverviewPageContainer extends Component {
     if (!trainList.length) return <EmptyOverviewNote />;
 
     return trainList.map((train, trainIndex) => {
+      const startTimeReadable = moment(train.startTime).format('HH:mm');
+
       return (
         <Card
           key={trainIndex}
           id={train._id}
           restaurant={train.restaurant}
           leader={train.leader}
-          startTime={train.startTime}
+          startTime={startTimeReadable}
           participants={train.participants}
           updateJoinAction={this.createJoinAction(
             this.props.user.uid,

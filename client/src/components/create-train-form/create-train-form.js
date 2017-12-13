@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
 import createTrain from '../../helpers/user-action/create-train';
+import TimePicker from 'react-bootstrap-time-picker';
+import moment from 'moment';
 import './create-train-form.css';
 
-class LoginForm extends Component {
+class CreateTrainForm extends Component {
   constructor() {
     super();
     this.state = {
       leader: '',
       restaurantName: '',
-      startTime: ''
+      startTime: 28800 // 8:00 AM
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleTimeChange = this.handleTimeChange.bind(this);
+  }
+
+  handleTimeChange(value) {
+    this.setState({
+      startTime: value
+    });
   }
 
   handleInputChange(event) {
@@ -26,10 +35,19 @@ class LoginForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const restaurant = this.state.restaurantName;
+
     const startTime = this.state.startTime;
+    const hours = Math.floor(startTime / 3600);
+    const minutes = Math.floor((startTime % 3600) / 60);
+    let dateMaker = moment();
+    dateMaker.hours(hours).minutes(minutes);
+    dateMaker.utcOffset(120);
+    const unixTime = dateMaker.valueOf();
+
+    const restaurant = this.state.restaurantName;
     const leader = this.state.leader;
-    createTrain(restaurant, leader, startTime, () => {
+
+    createTrain(restaurant, leader, unixTime, () => {
       this.props.history.push('/');
     });
   }
@@ -60,13 +78,14 @@ class LoginForm extends Component {
           type="textfield"
         />
 
-        <input
-          onChange={this.handleInputChange}
-          value={this.state.startTime}
+        <TimePicker
+          start="8:00"
+          end="16:00"
+          step={30}
+          onChange={this.handleTimeChange}
           name="startTime"
+          value={this.state.startTime}
           className="create-train-form__start-time text-input"
-          placeholder="Start time"
-          type="textfield"
         />
 
         <input
@@ -86,4 +105,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default CreateTrainForm;

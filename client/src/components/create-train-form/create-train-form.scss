@@ -1,7 +1,10 @@
+@import '../../variables';
+
 .create-train-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 1rem;
 }
 
 .create-train-form__leader {
