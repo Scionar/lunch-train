@@ -11,6 +11,9 @@ module.exports.connect = callback => {
     process.env.DATABASE_CONNECTION_PORT
   }/${process.env.DATABASE_NAME}?authSource=admin`;
 
+  if (process.env.ENVIRONMENT === 'development')
+    console.log(connectUrl, 'connectUrl');
+
   MongoClient.connect(connectUrl, function(err, db) {
     if (err) throw new Error(err);
     state.client = db;
