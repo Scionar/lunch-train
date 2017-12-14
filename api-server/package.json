@@ -8,6 +8,7 @@
     "express": "^4.16.2",
     "jest": "^21.2.1",
     "moment": "^2.19.4",
+    "mongo-mock": "^2.8.0",
     "mongodb": "^2.2.33",
     "socket.io": "^2.0.4"
   },
