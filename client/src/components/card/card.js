@@ -51,7 +51,6 @@ class Card extends Component {
   }
 
   listParticipants() {
-    console.log(this.props.participants, 'participants');
     return this.props.participants ? this.props.participants.join(', ') : '';
   }
 
