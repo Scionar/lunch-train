@@ -15,7 +15,7 @@
   "scripts": {
     "start": "node index.js",
     "fix-prettier": "prettier --write \"./**/*.{js,json,md}\"",
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "devDependencies": {
     "eslint": "^4.12.0",

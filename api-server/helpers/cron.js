@@ -1,5 +1,4 @@
-const getLeftTrains = require('./get-left-trains');
-const deleteTrain = require('./delete-train');
+const Train = require('../models/train/train');
 
 /**
  * Poor man's cron job. Run here checks with interval.
@@ -28,7 +27,7 @@ const cronJob = () => checkLeftTrains();
  * Check left trains.
  */
 const checkLeftTrains = () =>
-  getLeftTrains().then(leftTrains => {
+  Train.getLeft().then(leftTrains => {
     if (leftTrains.length) return handleLeftTrains(leftTrains);
     return Promise.resolve();
   });
@@ -39,6 +38,6 @@ const checkLeftTrains = () =>
 const handleLeftTrains = trains =>
   Promise.all(
     trains.map(train => {
-      return deleteTrain(train._id);
+      return Train.delete({ id: train._id.toString() });
     })
   );
