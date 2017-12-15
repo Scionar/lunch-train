@@ -1,6 +1,6 @@
 const socketIO = require('socket.io');
 const Train = require('./models/train/train');
-const updateJoinedStatus = require('./helpers/update-joined-status');
+const Join = require('./models/join/join');
 const personalizeTrainData = require('./helpers/personalize-train-data');
 const addJoinedUsers = require('./helpers/add-joined-users');
 
@@ -24,7 +24,7 @@ module.exports.create = server => {
     });
 
     socket.on('server:update:joinedStatus', (data, fn) => {
-      updateJoinedStatus(
+      Join.updateStatus(
         data.uid,
         data.name,
         data.trainId,
@@ -38,7 +38,6 @@ module.exports.create = server => {
       const restaurant = data.train.restaurant;
       const leader = data.train.leader;
       const startTime = data.train.startTime;
-      console.log(startTime, 'startTime');
 
       Train.create(restaurant, leader, startTime).then(() => {
         fn();
