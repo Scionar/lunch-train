@@ -5,8 +5,7 @@ const createTrain = (restaurant, leader, startTime, callback) => {
   const train = {
     restaurant,
     leader,
-    startTime,
-    joined: false
+    startTime
   };
   socket.get().emit('server:create:train', { train }, () => {
     updateAllTrains(() => {
