@@ -1,4 +1,4 @@
-const getAllJoinedStatuses = require('./get-all-joined-statuses');
+const Join = require('../models/join/join');
 
 /**
  * Add joined users to trains.
@@ -9,7 +9,7 @@ const getAllJoinedStatuses = require('./get-all-joined-statuses');
  * @return {Object[]} All lunch train objects.
  */
 module.exports = (trains, uid) => {
-  return getAllJoinedStatuses().then(joinedList =>
+  return Join.getAll().then(joinedList =>
     trains.map(train => {
       if (train.participants === undefined) train.participants = [];
       const trainId = train._id.toString();

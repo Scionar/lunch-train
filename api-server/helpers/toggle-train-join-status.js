@@ -1,5 +1,5 @@
 const db = require('../db');
-const getJoinedStatus = require('./get-joined-status');
+const Join = require('../models/join/join');
 const updateJoinedStatus = require('./update-joined-status');
 
 /**
@@ -9,7 +9,7 @@ const updateJoinedStatus = require('./update-joined-status');
  * @param {string} trainId Train ID.
  */
 module.exports = (uid, trainId) => {
-  return getJoinedStatus().then(result =>
+  return Join.getStatus(uid, trainId).then(result =>
     updateJoinedStatus(uid, trainId, !!result)
   );
 };

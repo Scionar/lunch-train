@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../../db');
 
 /**
  * Get joined documents for certain user and train.
