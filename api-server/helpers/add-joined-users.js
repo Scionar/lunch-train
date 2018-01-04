@@ -19,7 +19,7 @@ module.exports = (trains, uid) => {
       joinedList.forEach(join => {
         // Do not add current user to participants.
         if (join.uid !== uid) {
-          if (join.trainId === trainId) train.participants.push(join.name);
+          if (join.trainId === trainId) train.participants.push(join.userName);
         }
       });
       return train;
