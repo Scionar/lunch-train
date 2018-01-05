@@ -30,6 +30,7 @@ module.exports.create = server => {
         data.trainId,
         data.joinStatus
       ).then(() => {
+        socket.broadcast.emit('client:update:allTrains');
         fn();
       });
     });
@@ -40,6 +41,7 @@ module.exports.create = server => {
       const startTime = data.train.startTime;
 
       Train.create(restaurant, leader, startTime).then(() => {
+        socket.broadcast.emit('client:update:allTrains');
         fn();
       });
     });
