@@ -11,15 +11,15 @@
 
 .firebase-login .mdl-button {
   align-items: center;
-  background: #b3b3b3;
+  background: #00cc66;
   border-radius: 0.25rem;
   border: 0px;
+  box-shadow: 0 0 0.5rem 0 rgba(0, 0, 0, 0.5);
   color: #fff;
   display: inline-flex;
   font-size: 0.75rem;
   height: 2rem;
-  padding: 0.5rem 1rem;
-  width: 15rem; }
+  padding: 0.5rem 1rem; }
 
 .firebase-login .firebaseui-idp-icon-wrapper img {
   display: inline-block;
