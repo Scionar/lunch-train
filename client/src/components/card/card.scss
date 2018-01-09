@@ -4,6 +4,7 @@
   background-color: $color_white;
   box-shadow: 0 0 1rem 0 $color_black-50;
   margin: 0 0 1rem;
+  position: relative;
   width: 100%;
 }
 
@@ -44,4 +45,21 @@
 
 .card__actions {
   border-top: 1px solid $color_light-grey;
+}
+
+.card__delete-button {
+  background-image: url('/remove-icon.png');
+  background-size: 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
+  height: 2rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 2rem;
+
+  .card_own & {
+    display: inline-block;
+  }
 }

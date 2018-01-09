@@ -2,6 +2,7 @@
   background-color: #fff;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
   margin: 0 0 1rem;
+  position: relative;
   width: 100%; }
 
 .card__header {
@@ -34,3 +35,17 @@
 
 .card__actions {
   border-top: 1px solid #e6e6e6; }
+
+.card__delete-button {
+  background-image: url("/remove-icon.png");
+  background-size: 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
+  height: 2rem;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 2rem; }
+  .card_own .card__delete-button {
+    display: inline-block; }

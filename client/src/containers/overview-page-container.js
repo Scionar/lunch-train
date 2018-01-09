@@ -48,6 +48,7 @@ class OverviewPageContainer extends Component {
             train._id
           )}
           joined={train.joined}
+          own={train.own}
         />
       );
     });

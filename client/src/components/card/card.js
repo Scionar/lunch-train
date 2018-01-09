@@ -18,9 +18,11 @@ class Card extends Component {
   getCardClasses() {
     const opened = this.state.opened;
     const joined = this.props.joined;
+    const owned = this.props.own;
     let result = ['card'];
     if (opened) result.push('card_opened');
     if (joined) result.push('card_joined');
+    if (owned) result.push('card_own');
     return result.join(' ');
   }
 
@@ -61,6 +63,7 @@ class Card extends Component {
           <h2 className="card__restaurant-name">{this.props.restaurant}</h2>
           <div className="card__train-leader">{this.props.leader}</div>
           <div className="card__start-time">{this.props.startTime}</div>
+          <div className="card__delete-button" />
         </div>
         <div className="card__participants">{this.listParticipants()}</div>
         <div className="card__actions">

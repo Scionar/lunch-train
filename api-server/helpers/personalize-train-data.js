@@ -1,4 +1,5 @@
 const Join = require('../models/join/join');
+const Train = require('../models/train/train');
 
 /**
  * Personalize user data.
@@ -13,16 +14,31 @@ const Join = require('../models/join/join');
  */
 module.exports = (trains, uid) => {
   if (uid !== undefined) {
-    return Join.geStatusesByUid(uid)
-      .then(result => result.map(join => join.trainId)) // Flat joined statuses to an array of train IDs.
-      .then(joined =>
-        trains.map(train => {
-          // Change joined status if current train in array.
-          const trainId = train._id.toString();
-          if (joined.includes(trainId)) train.joined = true;
-          return train;
-        })
-      );
+    return setJoinedStatus(trains, uid).then(updatetTrains =>
+      Promise.resolve(setOwnStatus(updatetTrains, uid))
+    );
   }
   return Promise.resolve(trains);
 };
+
+// Add joined property to trains where user is joined.
+const setJoinedStatus = (trains, uid) =>
+  Join.geStatusesByUid(uid).then(trainsWithJoins => {
+    const joinList = trainsWithJoins.map(join => join.trainId);
+    return trains.map(train => {
+      // Change joined status if current train in array.
+      const trainId = train._id.toString();
+      if (joinList.includes(trainId)) train.joined = true;
+      return train;
+    });
+  });
+
+// Add own property to trains where creator is same as
+const setOwnStatus = (trains, uid) =>
+  trains.map(currentTrain => {
+    currentTrain.creator === uid
+      ? (currentTrain.own = true)
+      : (currentTrain.own = false);
+
+    return currentTrain;
+  });

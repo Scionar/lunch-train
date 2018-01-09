@@ -38,9 +38,10 @@ module.exports.create = server => {
     socket.on('server:create:train', (data, fn) => {
       const restaurant = data.train.restaurant;
       const leader = data.train.leader;
+      const creator = data.train.creator;
       const startTime = data.train.startTime;
 
-      Train.create(restaurant, leader, startTime).then(() => {
+      Train.create(restaurant, leader, creator, startTime).then(() => {
         socket.broadcast.emit('client:update:allTrains');
         fn();
       });

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import createTrain from '../../helpers/user-action/create-train';
 import TimePicker from 'react-bootstrap-time-picker';
 import moment from 'moment';
@@ -45,9 +46,10 @@ class CreateTrainForm extends Component {
     const unixTime = dateMaker.valueOf();
 
     const restaurant = this.state.restaurantName;
-    const leader = this.state.leader;
+    const leader = this.props.user.displayName;
+    const creator = this.props.user.uid;
 
-    createTrain(restaurant, leader, unixTime, () => {
+    createTrain(restaurant, leader, creator, unixTime, () => {
       this.props.history.push('/');
     });
   }
@@ -60,15 +62,6 @@ class CreateTrainForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="create-train-form">
-        <input
-          onChange={this.handleInputChange}
-          value={this.state.leader}
-          name="leader"
-          className="create-train-form__leader text-input"
-          placeholder="Your name"
-          type="textfield"
-        />
-
         <input
           onChange={this.handleInputChange}
           value={this.state.restaurantName}
@@ -105,4 +98,10 @@ class CreateTrainForm extends Component {
   }
 }
 
-export default CreateTrainForm;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  };
+};
+
+export default connect(mapStateToProps)(CreateTrainForm);

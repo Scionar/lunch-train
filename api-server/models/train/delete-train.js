@@ -18,6 +18,13 @@ module.exports = selector =>
         .remove(cleanedSelector)
     );
 
+/*
+ * Create selector to delete right train.
+ *
+ * @param {Object} selector - Object with train properties.
+ *
+ * @return {Object} Status of remove operation.
+ */
 const filterSelector = selector => {
   let returnSelector = {};
   Object.keys(selector).forEach(key => {

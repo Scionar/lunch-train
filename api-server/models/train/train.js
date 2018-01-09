@@ -4,10 +4,11 @@ const deleteTrain = require('./delete-train');
 const getLeftTrains = require('./get-left-trains');
 
 module.exports = {
-  create: (restaurant, leader, startTime) =>
+  create: (restaurant, leader, creator, startTime) =>
     createTrain({
       restaurant,
       leader,
+      creator,
       startTime
     }),
   getAll: () => getAllTrains(),
